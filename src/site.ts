@@ -1,11 +1,11 @@
 import type { EcosystemSite, SiteId } from 'react-cheminfo/core';
 
-/** Where the sources live. */
-export const REPOSITORY = 'https://github.com/cheminfo/images.cheminfo.org';
-
 /** One line on what the site does. */
 export const TAGLINE =
   'Crop, rotate, adjust, resize and compress images, in your browser.';
+
+/** The host the site answered on before it was renamed. */
+export const FORMER_HOST = 'images.cheminfo.org';
 
 /**
  * The site's own record, in the shape the family's SEO helpers read.
@@ -14,11 +14,11 @@ export const TAGLINE =
  * the Tools menu of the other sites and links to none of them, so its id is
  * not one of the family's.
  */
-export const IMAGES_SITE: EcosystemSite = {
-  id: 'images' as SiteId,
-  name: { lead: 'images', alt: 'cheminfo', dot: true },
-  host: 'images.cheminfo.org',
-  repository: REPOSITORY,
+export const RESIZE_SITE: EcosystemSite = {
+  id: 'resize' as SiteId,
+  name: { lead: 'resize', alt: 'cheminfo', dot: true },
+  host: 'resize.cheminfo.org',
+  formerHosts: [FORMER_HOST],
   group: 'computing',
   tagline: TAGLINE,
   brand: '#a21caf',

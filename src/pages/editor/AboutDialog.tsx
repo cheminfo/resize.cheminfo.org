@@ -21,7 +21,7 @@ export function AboutDialog(props: {
     <Dialog
       isOpen={isOpen}
       onClose={onClose}
-      title="About images.cheminfo"
+      title="About resize.cheminfo"
       icon={<BrandMark size={20} />}
       style={{ width: 640 }}
     >

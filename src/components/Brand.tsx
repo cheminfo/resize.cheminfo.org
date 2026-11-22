@@ -30,7 +30,7 @@ export function BrandMark(props: { size?: number }): ReactElement {
 export function Wordmark(): ReactElement {
   return (
     <span className="wordmark">
-      <span className="wordmark__lead">images</span>
+      <span className="wordmark__lead">resize</span>
       <span className="wordmark__dot">.</span>
       <span className="wordmark__alt">cheminfo</span>
     </span>

@@ -10,11 +10,11 @@
 import { BUILD_INFO } from 'react-cheminfo/build-info';
 import type { AboutContent } from 'react-cheminfo/core';
 
-import { IMAGES_SITE } from './site.ts';
+import { RESIZE_SITE } from './site.ts';
 
 /** The record the `/about` page and the editor's About dialog are drawn from. */
 export const ABOUT: AboutContent = {
-  siteId: IMAGES_SITE,
+  siteId: RESIZE_SITE,
   // Which release, built when, from which commit: the build says so,
   // because a version written by hand is wrong by the next release.
   build: BUILD_INFO,

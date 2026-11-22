@@ -15,7 +15,7 @@ const html = `<!doctype html>
       </svg>
       <div>
         <div style="font-size:84px;font-weight:700;letter-spacing:-0.01em">
-          <span style="color:#a21caf">images</span><span style="color:#8a96a3">.</span><span style="color:#b45309">cheminfo</span>
+          <span style="color:#a21caf">resize</span><span style="color:#8a96a3">.</span><span style="color:#b45309">cheminfo</span>
         </div>
         <div style="margin-top:16px;font-size:34px;color:#5b6875">Crop, rotate, adjust, resize and compress<br>images, in your browser.</div>
       </div>

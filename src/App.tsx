@@ -14,7 +14,7 @@ import { Editor } from './pages/Editor.tsx';
 import type { Tab } from './router.ts';
 import { router } from './router.ts';
 import { PAGE_ROUTES } from './seo/routes.ts';
-import { IMAGES_SITE } from './site.ts';
+import { RESIZE_SITE } from './site.ts';
 import { pathWithoutBase, withBase } from './state/site.ts';
 
 const PAGES: Array<{ tab: Tab; label: string; title: string }> = [
@@ -32,7 +32,7 @@ export function App(): ReactElement {
   useEffect(() => {
     writeDocumentMeta(
       pageDocumentMeta({
-        site: IMAGES_SITE,
+        site: RESIZE_SITE,
         routes: PAGE_ROUTES,
         // The route table is written from the site's own root, so the mount
         // comes back off before it is read.
@@ -48,7 +48,7 @@ export function App(): ReactElement {
           <a
             href={withBase('/')}
             className="brand"
-            title={IMAGES_SITE.host}
+            title={RESIZE_SITE.host}
             onClick={(event) => {
               follow(event, 'edit');
             }}

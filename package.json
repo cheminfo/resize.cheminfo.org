@@ -1,11 +1,14 @@
 {
-  "name": "images-cheminfo-org",
+  "name": "resize-cheminfo-org",
   "version": "0.0.0",
   "description": "Drop images or folders, crop, rotate, adjust colours, resize and compress them to JPEG or PNG, in the browser.",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "vite build",
+    "build": "npm run test && npm run test-e2e && npm run build-only",
+    "build-only": "vite build && npm run check-seo",
+    "check-deploy": "node node_modules/react-cheminfo/bin/check-deploy.mjs --image-name=ghcr.io/cheminfo/resize.cheminfo.org",
+    "check-seo": "node node_modules/react-cheminfo/bin/check-seo.mjs dist",
     "check-tokens": "node node_modules/react-cheminfo/bin/check-tokens.mjs src",
     "check-types": "tsc --noEmit",
     "dev": "vite",
@@ -15,7 +18,7 @@
     "prettier": "prettier --check .",
     "prettier-write": "prettier --write .",
     "preview": "vite preview",
-    "test": "npm run test-only && npm run check-types && npm run check-tokens && npm run eslint && npm run prettier",
+    "test": "npm run test-only && npm run check-types && npm run check-tokens && npm run check-deploy && npm run eslint && npm run prettier",
     "test-e2e": "playwright test",
     "test-only": "vitest run --coverage"
   },
@@ -28,7 +31,7 @@
     "fifo-logger": "^2.0.1",
     "file-collection": "^6.7.0",
     "react": "^19.3.0",
-    "react-cheminfo": "^0.15.0",
+    "react-cheminfo": "^0.141.0",
     "react-dom": "^19.3.0",
     "react-roi": "^3.2.1",
     "react-science": "^23.1.1"
@@ -36,8 +39,8 @@
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
     "@vitest/coverage-v8": "^4.1.10",
     "@zakodium/tsconfig": "^1.0.5",
@@ -50,6 +53,8 @@
   },
   "overrides": {
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0"
   }
 }

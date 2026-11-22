@@ -4,16 +4,16 @@
 #   Networks → Tunnels → Create a tunnel → Cloudflared connector →
 #   copy the token into .env as TUNNEL_TOKEN=... → open the tunnel →
 #   Published applications → Add an application with
-#   Service = HTTP and URL = images:80.
+#   Service = HTTP and URL = resize:80.
 #
 # Select with COMPOSE_FILE=compose.cloudflared.yaml in .env, then:
 #   docker compose up -d
 
 services:
-  images:
+  resize:
     # Use the released image by default. To build locally instead, run:
     #   docker compose up -d --build
-    image: ${IMAGE_NAME:-ghcr.io/cheminfo/images.cheminfo.org}:${IMAGE_TAG:-latest}
+    image: ${IMAGE_NAME:-ghcr.io/cheminfo/resize.cheminfo.org}:${IMAGE_TAG:-latest}
     build: .
     init: true
     # Nothing is bind-mounted, so nothing here needs root.
@@ -58,7 +58,7 @@ services:
         max-file: '3'
 
   cloudflared:
-    image: cloudflare/cloudflared:latest
+    image: cloudflare/cloudflared:2026.9.0
     command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
     init: true
     restart: unless-stopped
@@ -78,4 +78,4 @@ services:
         max-size: '10m'
         max-file: '2'
     depends_on:
-      - images
+      - resize

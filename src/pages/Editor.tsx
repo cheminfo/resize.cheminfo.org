@@ -119,8 +119,8 @@ function ImageTools(props: { image: ImageEntry }): ReactElement {
       <Toolbar vertical aria-label="Image tools">
         <Toolbar.Item
           icon={<BrandMark size={16} />}
-          tooltip="About images.cheminfo"
-          aria-label="About images.cheminfo"
+          tooltip="About resize.cheminfo"
+          aria-label="About resize.cheminfo"
           onClick={() => {
             setAboutOpen(true);
           }}

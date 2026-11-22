@@ -7,10 +7,10 @@
 #   docker compose up -d
 
 services:
-  images:
+  resize:
     # Use the released image by default. To build locally instead, run:
     #   docker compose up -d --build
-    image: ${IMAGE_NAME:-ghcr.io/cheminfo/images.cheminfo.org}:${IMAGE_TAG:-latest}
+    image: ${IMAGE_NAME:-ghcr.io/cheminfo/resize.cheminfo.org}:${IMAGE_TAG:-latest}
     build: .
     init: true
     # Nothing is bind-mounted, so nothing here needs root.
@@ -58,10 +58,10 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=traefik'
-      - 'traefik.http.routers.images.rule=Host(`images.cheminfo.org`)'
-      - 'traefik.http.routers.images.entrypoints=websecure'
-      - 'traefik.http.routers.images.tls.certresolver=letsencrypt'
-      - 'traefik.http.services.images.loadbalancer.server.port=80'
+      - 'traefik.http.routers.resize.rule=Host(`resize.cheminfo.org`)'
+      - 'traefik.http.routers.resize.entrypoints=websecure'
+      - 'traefik.http.routers.resize.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.resize.loadbalancer.server.port=80'
 
 networks:
   traefik:

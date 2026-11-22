@@ -6,7 +6,7 @@ import {
 
 /**
  * The path this deployment is mounted at: the empty string on a host of its
- * own, `/images` as one tool among several on a shared one.
+ * own, `/resize` as one tool among several on a shared one.
  *
  * It is read off the page, not off the build. Vite writes the assets relative,
  * so the build carries no mount at all; what tells two deployments apart is the

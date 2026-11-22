@@ -17,7 +17,7 @@ async function siteMountedAt(baseUri: string) {
 }
 
 test('a deployment on a host of its own writes its addresses unchanged', async () => {
-  const site = await siteMountedAt('https://images.cheminfo.org/');
+  const site = await siteMountedAt('https://resize.cheminfo.org/');
 
   expect(site.BASE_PATH).toBe('');
   expect(site.withBase('/')).toBe('/');
@@ -36,7 +36,7 @@ test('a deployment mounted under a path writes every address under it', async ()
 });
 
 test('the same build serves both addresses, because the mount is not built in', async () => {
-  const own = await siteMountedAt('https://images.cheminfo.org/');
+  const own = await siteMountedAt('https://resize.cheminfo.org/');
   const shared = await siteMountedAt('https://eln.epfl.ch/cheminfo/images/');
 
   expect(own.withBase('/about')).toBe('/about');

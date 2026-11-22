@@ -3,7 +3,7 @@ import { cheminfoBuildInfo, cheminfoPrerender } from 'react-cheminfo/vite';
 import { defineConfig } from 'vite';
 
 import { PAGE_ROUTES } from './src/seo/routes.ts';
-import { IMAGES_SITE } from './src/site.ts';
+import { RESIZE_SITE } from './src/site.ts';
 
 // 2026-09-15 gives 60915, over 60000, so 50000 comes off. Docker publishes the
 // same number through `PORT`, and two checkouts must not share Vite's 5173.
@@ -19,7 +19,7 @@ export default defineConfig({
     react(),
     cheminfoBuildInfo(),
     cheminfoPrerender({
-      site: IMAGES_SITE,
+      site: RESIZE_SITE,
       routes: PAGE_ROUTES,
       category: 'MultimediaApplication',
       operatingSystem: 'Any modern browser',

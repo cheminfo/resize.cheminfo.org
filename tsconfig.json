@@ -5,5 +5,5 @@
     "noUncheckedIndexedAccess": true,
     "types": ["node", "vite/client"]
   },
-  "include": ["scripts", "src", "vite*.ts"]
+  "include": ["functions", "scripts", "src", "vite*.ts"]
 }

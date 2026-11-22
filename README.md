@@ -1,4 +1,4 @@
-# images.cheminfo.org
+# resize.cheminfo.org
 
 Crop, rotate, adjust, resize and compress images, in the browser. Nothing is
 uploaded: files are decoded, edited and encoded on the visitor's machine, and
@@ -18,6 +18,9 @@ The site uses the family's chrome and libraries (`react-cheminfo`,
 `ECOSYSTEM_SITES`: it does not appear in the other sites' Tools menu and links
 to none of them.
 
+The site was called `images.cheminfo.org` until 2026-11. That host keeps
+answering, with a 301 to the same path and query on `resize.cheminfo.org`.
+
 ## Development
 
 ```sh
@@ -25,10 +28,18 @@ npm install
 npm run dev        # http://localhost:10915
 npm run test       # unit tests, types, tokens, lint, format
 npm run test-e2e   # Playwright
-npm run build
+npm run build      # test, test-e2e, then build-only
 ```
 
 ## Deployment
+
+The site is served by Cloudflare Pages (project `resize-cheminfo`): a push to
+`main` builds `npm run build-only` into `dist` and deploys it. A Pages
+Function (`functions/_middleware.ts`) sends the former host to the new one and
+injects `TRACKING_SCRIPT`, a variable of the Pages project; unset, nothing is
+injected.
+
+The Docker image remains for a deployment on a host of its own:
 
 ```sh
 cp .env.example .env
@@ -39,7 +50,7 @@ docker compose up -d
 | Mode        | File                       | Exposed as                         |
 | ----------- | -------------------------- | ---------------------------------- |
 | Port        | `compose.yaml` (default)   | `127.0.0.1:${PORT}`                |
-| Traefik     | `compose.traefik.yaml`     | `images.cheminfo.org`              |
+| Traefik     | `compose.traefik.yaml`     | `resize.cheminfo.org`              |
 | Cloudflared | `compose.cloudflared.yaml` | the tunnel's published application |
 
 The image is selected by `IMAGE_NAME` / `IMAGE_TAG`, which the server's deploy
@@ -51,7 +62,7 @@ a server: it overwrites the running tag and leaves nothing to roll back to.
 | Variable          | Default                                | Purpose                                                                                                           |
 | ----------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `COMPOSE_FILE`    | `compose.yaml`                         | Deployment mode                                                                                                   |
-| `IMAGE_NAME`      | `ghcr.io/cheminfo/images.cheminfo.org` | Image to run                                                                                                      |
+| `IMAGE_NAME`      | `ghcr.io/cheminfo/resize.cheminfo.org` | Image to run                                                                                                      |
 | `IMAGE_TAG`       | `latest`                               | Rewritten by the deploy script                                                                                    |
 | `PORT`            | `10915`                                | Host port (`compose.yaml`) and dev server port                                                                    |
 | `TRACKING_SCRIPT` | unset                                  | Analytics snippet, injected at the end of `<head>` of every served page by the entrypoint; a dev run never tracks |

@@ -3,10 +3,10 @@
 # Used when COMPOSE_FILE is unset in .env. Run: docker compose up -d
 
 services:
-  images:
+  resize:
     # Use the released image by default. To build locally instead, run:
     #   docker compose up -d --build
-    image: ${IMAGE_NAME:-ghcr.io/cheminfo/images.cheminfo.org}:${IMAGE_TAG:-latest}
+    image: ${IMAGE_NAME:-ghcr.io/cheminfo/resize.cheminfo.org}:${IMAGE_TAG:-latest}
     build: .
     init: true
     # Nothing is bind-mounted, so nothing here needs root.

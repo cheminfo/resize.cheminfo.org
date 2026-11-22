@@ -240,7 +240,7 @@ test('the editor toolbar opens the About in a dialog', async ({ page }) => {
     .locator('input[type="file"]')
     .setInputFiles([{ name: 'shot.png', mimeType: 'image/png', buffer: png }]);
 
-  await page.getByRole('button', { name: 'About images.cheminfo' }).click();
+  await page.getByRole('button', { name: 'About resize.cheminfo' }).click();
   const dialog = page.getByRole('dialog');
   await expect(
     dialog.getByRole('heading', { name: 'What you can do here' }),
@@ -254,10 +254,10 @@ test('the editor toolbar opens the About in a dialog', async ({ page }) => {
 
 test('the About is a page of its own', async ({ page }) => {
   await page.goto('/about');
-  await expect(page).toHaveTitle('About — images.cheminfo.org');
+  await expect(page).toHaveTitle('About — resize.cheminfo.org');
   await expect(
     page.getByRole('heading', { name: 'What you can do here' }),
   ).toBeVisible();
-  await page.getByRole('link', { name: 'images.cheminfo' }).first().click();
+  await page.getByRole('link', { name: 'resize.cheminfo' }).first().click();
   await expect(page.getByTestId('editor-drop')).toBeVisible();
 });

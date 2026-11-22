@@ -20,6 +20,6 @@ export const PAGE_ROUTES: RouteMeta[] = [
     path: '/about',
     title: 'About',
     description:
-      'What images.cheminfo.org does with your photos, what it is built on, its licence and source code, and where to report a problem.',
+      'What resize.cheminfo.org does with your photos: nothing leaves your browser. Which libraries it is built on, and which build you have open.',
   },
 ];
